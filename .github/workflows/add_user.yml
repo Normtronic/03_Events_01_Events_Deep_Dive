@@ -19,8 +19,8 @@ jobs:
     - name: Add member to team
       env:
         GH_TOKEN: ${{ secrets.FULL_TOKEN }}
-        ORG: your-org-name
-        TEAM_SLUG: your-team-slug
+        ORG: ForCotoTest
+        TEAM_SLUG: DEV
         USERNAME: ${{ github.event.inputs.username }}
       run: |
         curl -X PUT -H "Authorization: token $GH_TOKEN" \
