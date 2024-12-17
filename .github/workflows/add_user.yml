@@ -1,0 +1,28 @@
+name: Add Team Member
+
+on:
+  workflow_dispatch:
+    inputs:
+      username:
+        description: 'GitHub username of the new member'
+        required: true
+        type: string
+
+jobs:
+  add_member:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v3
+
+    - name: Add member to team
+      env:
+        GH_TOKEN: ${{ secrets.GH_TOKEN }}
+        ORG: your-org-name
+        TEAM_SLUG: your-team-slug
+        USERNAME: ${{ github.event.inputs.username }}
+      run: |
+        curl -X PUT -H "Authorization: token $GH_TOKEN" \
+        -H "Accept: application/vnd.github.v3+json" \
+        https://api.github.com/orgs/$ORG/teams/$TEAM_SLUG/memberships/$USERNAME

@@ -11,10 +11,10 @@ on:
       - 'feat/**'  # feat/new or feat/new/button
 jobs:
   deploy:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     steps:
-      - name: Output event data
-        run: echo "${{ toJSON(github.event) }}"
+      #- name: Output event data
+      #  run: echo "${{ toJSON(github.event) }}"
       - name: Get code
         uses: actions/checkout@v3
       - name: Install dependencies
